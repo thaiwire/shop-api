@@ -1,0 +1,43 @@
+@base = http://localhost:3000/api
+
+### ดูทั้งหมด
+GET {{base}}/products
+
+### ค้นหา
+GET {{base}}/products?q=ปากกา
+
+### ดู 1 รายการ
+GET {{base}}/products/1
+
+### เพิ่มสินค้า
+POST {{base}}/products
+Content-Type: application/json
+
+{
+  "name": "ปากกาลูกลื่น",
+  "price": 12.5,
+  "stock": 100
+}
+
+### แก้ไขราคา
+PATCH {{base}}/products/1
+Content-Type: application/json
+
+{
+  "price": 15
+}
+
+### ลบ
+DELETE {{base}}/products/1
+
+### ทดสอบข้อมูลผิด (ต้องได้ 400)
+POST {{base}}/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": -1
+}
+
+### test
+GET {{base}}/products?q=ปากกา
